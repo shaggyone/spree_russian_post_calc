@@ -1,0 +1,7 @@
+.bundle/
+log/*.log
+pkg/
+spec/dummy/
+.rvmrc
+Gemfile.lock
+
