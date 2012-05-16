@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+gem 'russian_post_calc', :path => '../russian_post_calc'
+gem 'be_rude',           :path => '../be_rude'
+#gem 'spree', :path => '../spree'
 group :test do
   gem 'ffaker'
 end
