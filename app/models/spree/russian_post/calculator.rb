@@ -21,10 +21,10 @@ class Spree::RussianPost::Calculator < Spree::Calculator
   end
 
   def compute(object=nil)
-    weight = compute_weight(weight)
+    weight = compute_weight(object)
 
     # Get order from the object.
-    order = object.is_a?(Order) ? object : object.order
+    order = object.is_a?(::Spree::Order) ? object : object.order
 
     declared_value = if preferred_use_declared_value
                        object.line_items.map(&:amount).sum
@@ -33,7 +33,7 @@ class Spree::RussianPost::Calculator < Spree::Calculator
                      end
 
     # Calculate delivery price itself.
-    calculate_delivery_price preferred_sender_post_code, order.ship_address.zipcode, weight, declared_value
+    calculate_price preferred_sender_post_code, order.ship_address.zipcode, weight, declared_value
   end
 
   # Computes weight for the given order.
@@ -48,16 +48,15 @@ class Spree::RussianPost::Calculator < Spree::Calculator
     object.line_items.map { |li| li.variant.weight  * li.quantity }.sum
   end
 
+  def calculate_price sender_post_code, destination_post_code, weight, declared_value = 0
+    weight = if weight < 0.75
+               0
+             elsif weight > 20
+               then raise "Максимальный вес для отправления: 20 кг."
+             else
+               ((weight - 0.25) / 0.5).floor * 0.5 + 0.25
+             end
 
-  # Make weight to be 0.75, 1.25, 1.75...
-  be_rude :calculate_delivery_price,
-    2 => lambda { |weight|
-           if weight < 0.75
-             0
-           elsif weight > 20
-             then raise "Максимальный вес для отправления: 20 кг."
-           else
-             ((weight - 0.25) / 0.5).floor * 0.5 + 0.25
-           end
-         }
+    self.class.calculate_delivery_price sender_post_code, destination_post_code, weight, declared_value
+  end
 end
