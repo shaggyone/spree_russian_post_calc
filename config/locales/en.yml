@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  russian_post_description: "Russian Post"
+  sender_post_code:         "Sender Post Code"
+  cache_on_delivery_percentage: "Cache On Delivery Percentage"
+  autoselect_payment_method_id: "Automatically Select Payment Method"
+  use_declared_value:           "Use Declared Value of the package"
