@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'rails', '~> 3.2.0'
+  s.add_dependency 'flexy_cache', '~> 0.0.0'
   s.add_dependency 'spree_core', '~> 1.1.0'
 
   s.add_development_dependency 'capybara', '1.0.1'

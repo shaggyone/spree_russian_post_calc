@@ -2,7 +2,6 @@
 
 class Spree::RussianPost::Calculator < Spree::Calculator
   include RussianPostCalc
-  include FlexyCache
 
   # Post code of the sender.
   preference :sender_post_code,             :string,    :default => '190000'
@@ -61,10 +60,14 @@ class Spree::RussianPost::Calculator < Spree::Calculator
     self.class.calculate_delivery_price sender_post_code, destination_post_code, weight, declared_value
   end
 
-  flexy_cache :calculate_price,
-              :cache_key_condition => Proc.new { |*args| args.join("/") },
-              :expired_on          => Proc.new { |object| Time.now + 2.weeks },
-              :retry_in            => Proc.new { |object| Time.now + 2.hours },
-              :error_result        => Proc.new { |result, object| result.blank? },
-              :catch_exceptions    => Net::HTTPExceptions
+  class << self
+    include ::FlexyCache
+
+    flexy_cache :calculate_delivery_price,
+                :cache_key_condition => Proc.new { |*args| args.join("/") },
+                :expired_on          => Proc.new { |object| Time.now + 2.weeks },
+                :retry_in            => Proc.new { |object| Time.now + 2.hours },
+                :error_result        => Proc.new { |result, object| result.blank? },
+                :catch_exceptions    => Net::HTTPExceptions
+  end
 end

@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'russian_post_calc', :path => '../russian_post_calc'
 # gem 'be_rude',           :path => '../be_rude'
 # gem 'spree', :path => '../spree'
+gem 'flexy_cache', :path => '../flexy_cache'
+
 group :test do
   gem 'ffaker'
 end
