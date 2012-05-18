@@ -1,8 +1,8 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_russian_post'
-  s.version     = '1.0.0'
+  s.name        = 'spree_russian_post_calc'
+  s.version     = '0.1.0'
   s.summary     = 'TODO: Add gem summary here'
   s.description = 'TODO: Add (optional) gem description here'
   s.required_ruby_version = '>= 1.8.7'

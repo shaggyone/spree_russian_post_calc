@@ -15,6 +15,10 @@ module SpreeRussianPost
       end
     end
 
+    config.after_initialize do |app|
+      app.config.spree.calculators.shipping_methods << Spree::RussianPost::Calculator
+    end
+
     config.to_prepare &method(:activate).to_proc
   end
 end

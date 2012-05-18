@@ -4,7 +4,7 @@ class Spree::RussianPost::Calculator < Spree::Calculator
   include RussianPostCalc
 
   # Post code of the sender.
-  preference :sender_post_code,             :text,    :default => '190000'
+  preference :sender_post_code,             :string,    :default => '190000'
 
   # Calculated price will we multipied to 100% + cache_on_delivery_percentage%
   preference :cache_on_delivery_percentage, :decimal, :default => 0
