@@ -45,7 +45,7 @@ class Spree::RussianPost::Calculator < Spree::Calculator
   # TODO (VZ): Move it to the order class. Perhabs add caching to this fiesld's value.
   # TODO (VZ): Add weight caching to the line item.
   def compute_weight object
-    object.line_items.map { |li| li.variant.weight  * li.quantity }.sum
+    object.line_items.map { |li| (li.variant.weight || 0)  * li.quantity }.sum
   end
 
   def calculate_price sender_post_code, destination_post_code, weight, declared_value = 0
