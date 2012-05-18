@@ -1,7 +1,7 @@
-module SpreeRussianPost
+module SpreeRussianPostCalc
   class Railtie < ::Rails::Railtie #:nodoc:
     initializer 'spree-i18n' do |app|
-      SpreeI18n::Railtie.instance_eval do
+      SpreeRussianPostCalc::Railtie.instance_eval do
         pattern = pattern_from app.config.i18n.available_locales
 
         add("config/locales/#{pattern}.{rb,yml}")

@@ -1,3 +1,3 @@
 require 'spree_core'
-require 'spree_russian_post/engine'
-require 'spree_russian_post/railtire'
+require 'spree_russian_post_calc/engine'
+require 'spree_russian_post_calc/railtire'

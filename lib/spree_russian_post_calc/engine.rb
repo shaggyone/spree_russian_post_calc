@@ -1,6 +1,6 @@
-module SpreeRussianPost
+module SpreeRussianPostCalc
   class Engine < Rails::Engine
-    engine_name 'spree_russian_post'
+    engine_name 'spree_russian_post_calc'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
