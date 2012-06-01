@@ -65,7 +65,7 @@ class Spree::RussianPost::Calculator < Spree::Calculator
 
     flexy_cache :calculate_delivery_price,
                 :cache_key_condition => Proc.new { |*args| args.join("/") },
-                :expired_on          => Proc.new { |object| Time.now + 2.weeks },
+                :expire_on           => Proc.new { |object| Time.now + 2.weeks },
                 :retry_in            => Proc.new { |object| Time.now + 2.hours },
                 :error_result        => Proc.new { |result, object| result.blank? },
                 :catch_exceptions    => Net::HTTPExceptions
